@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:layout_marginTop="25dp">
+    <EditText
+        android:id="@+id/event_name_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:hint="Event Name"
+        android:paddingLeft="10dp"
+        android:textColorHint="#d9e5f3"
+        android:background="@drawable/border"
+        android:letterSpacing="0.1"
+        android:textSize="16dp"
+        android:inputType="text"
+        android:textColor="#fff"
+        android:focusable="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:onClick="onNameClick"
+        android:imeOptions="actionDone"
+        android:layout_weight="5"/>
+    <TextView
+        android:id="@+id/date_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Set Date"
+        android:layout_weight="3"
+        android:letterSpacing="0.1"
+        android:textSize="16dp"
+        android:background="@drawable/border"
+        android:textColor="#d9e5f3"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginRight="5dp"
+        android:onClick="onDateClick"/>
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:background="@android:drawable/ic_delete"
+        android:onClick="onDelete"/>
+</LinearLayout>

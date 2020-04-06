@@ -1,0 +1,88 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="apch.marvelbasket"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:4:5-66
+11-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:4:22-64
+12
+13    <application
+13-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:5:5-34:19
+14        android:name="androidx.multidex.MultiDexApplication"
+15        android:allowBackup="true"
+15-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:7:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.0.1] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\aa782ce88e4a65071c9b22f6f1fd262a\core-1.0.1\AndroidManifest.xml:22:18-86
+17        android:debuggable="true"
+18        android:icon="@mipmap/ic_launcher"
+18-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:8:9-43
+19        android:label="@string/app_name"
+19-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:9:9-41
+20        android:supportsRtl="true"
+20-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:10:9-35
+21        android:testOnly="true"
+22        android:theme="@style/AppTheme"
+22-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:11:9-40
+23        android:usesCleartextTraffic="true" >
+23-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:6:9-44
+24        <activity
+24-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:12:9-21:20
+25            android:name="apch.marvelbasket.HomeActivity"
+25-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:13:13-41
+26            android:label="@string/title_activity_home"
+26-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:14:13-56
+27            android:theme="@style/AppTheme.NoActionBar" >
+27-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:15:13-56
+28            <intent-filter>
+28-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:16:13-19:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:17:17-69
+29-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:17:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:18:17-77
+31-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:18:27-74
+32            </intent-filter>
+33        </activity>
+34        <activity
+34-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:22:9-26:20
+35            android:name="apch.marvelbasket.login"
+35-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:23:13-34
+36            android:screenOrientation="portrait" >
+36-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:24:13-49
+37        </activity>
+38        <activity android:name="apch.marvelbasket.signup" />
+38-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:27:9-44
+38-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:27:19-41
+39        <activity
+39-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:28:9-32:20
+40            android:name="apch.marvelbasket.EventActivity"
+40-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:29:13-42
+41            android:screenOrientation="portrait" >
+41-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:30:13-49
+42        </activity>
+43        <activity android:name="apch.marvelbasket.DatePickerFragment" />
+43-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:33:9-56
+43-->C:\Users\HP\Dropbox\MarvelBasket\app\src\main\AndroidManifest.xml:33:19-53
+44
+45        <provider
+45-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\80a00d5735d69f4f399457d9ccd7230d\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+46            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+46-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\80a00d5735d69f4f399457d9ccd7230d\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+47            android:authorities="apch.marvelbasket.lifecycle-process"
+47-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\80a00d5735d69f4f399457d9ccd7230d\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+48            android:exported="false"
+48-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\80a00d5735d69f4f399457d9ccd7230d\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+49            android:multiprocess="true" />
+49-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\HP\.gradle\caches\transforms-2\files-2.1\80a00d5735d69f4f399457d9ccd7230d\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+50    </application>
+51
+52</manifest>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@drawable/grdnt"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_linear_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventActivity"
+    android:background="@drawable/grdnt"
+    android:layout_margin="5dp"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/event_name_edit_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+            android:textColorHint="#d9e5f3"
+            android:background="@drawable/border"
+            android:letterSpacing="0.1"
+            android:textSize="16dp"
+            android:inputType="text"
+            android:textColor="#fff"
+            android:text="Birth Date"
+            android:focusable="false"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="5"/>
+        <TextView
+            android:id="@+id/date_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Set Date"
+            android:layout_weight="3"
+            android:letterSpacing="0.1"
+            android:textSize="16dp"
+            android:background="@drawable/border"
+            android:textColor="#d9e5f3"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginRight="5dp"
+            android:onClick="onDateClick"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/add_field_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="5dp"
+        android:text="Add Event"
+        android:background="@drawable/border"
+        android:textColor="#d9e5f3"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="1dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center"
+        android:onClick="onAddField"
+        android:paddingLeft="5dp"/>
+
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="5dp"
+        android:text="Sign Up"
+        android:background="@drawable/border"
+        android:textColor="#d9e5f3"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="1dp"
+        android:layout_marginRight="5dp"
+        android:onClick="onSignUp"
+        android:layout_gravity="center"
+        android:paddingLeft="5dp"/>
+</LinearLayout>
+</ScrollView>
