@@ -12,13 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import apch.marvelbasket.R;
-import apch.marvelbasket.ui.user.HomeViewModel;
 
 public class ProfileFragment extends Fragment {
 
@@ -27,10 +24,8 @@ public class ProfileFragment extends Fragment {
     private TextView textView;
     private ImageButton btn;
 
-    private apch.marvelbasket.ui.profile.ProfileViewModel profileViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        profileViewModel = ViewModelProviders.of(this).get(ProfileViewModel.class);
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
 
 

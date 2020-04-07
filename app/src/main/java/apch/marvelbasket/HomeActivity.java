@@ -15,6 +15,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
@@ -24,8 +25,13 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -41,13 +47,24 @@ import java.util.List;
 
 import apch.marvelbasket.bean.ContactModel;
 import apch.marvelbasket.receiver.AlarmReceiver;
+import apch.marvelbasket.ui.about.AboutUsFragment;
+import apch.marvelbasket.ui.events.AddEventsFragment;
+import apch.marvelbasket.ui.events.YourEventsFragment;
+import apch.marvelbasket.ui.friends.FriendsFragment;
+import apch.marvelbasket.ui.orders.OrdersFragment;
+import apch.marvelbasket.ui.profile.ProfileFragment;
+import apch.marvelbasket.ui.shopping.ShoppingFragment;
+import apch.marvelbasket.ui.user.HomeFragment;
 
-public class HomeActivity extends AppCompatActivity {
+import static android.app.PendingIntent.getActivity;
+
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "HomeActivity";
     private AppBarConfiguration mAppBarConfiguration;
     private List<ContactModel> contactList;
     private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,16 +73,30 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawer,toolbar,R.string.nav_app_bar_open_drawer_description,R.string.nav_app_bar_open_drawer_description);
+        drawer.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
+       /* mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_user_home, R.id.nav_profile,R.id.nav_your_events, R.id.nav_add_events,R.id.nav_friends,R.id.nav_about_us,R.id.nav_shopping,R.id.nav_orders)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        NavigationUI.setupWithNavController(navigationView, navController);*/
+
+        setTitle("Dashboard");
+        navigationView.setCheckedItem(R.id.nav_user_home);
+        Fragment fragment = new HomeFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.home,fragment);
+        fragmentTransaction.commit();
 
         //====================Alarm service==========================
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -178,5 +209,59 @@ public class HomeActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        Fragment fragment = null;
+        switch (menuItem.getItemId()){
+
+            case R.id.nav_user_home:
+                setTitle("Dashboard");
+                fragment = new HomeFragment();
+                break;
+            case R.id.nav_profile:
+                setTitle("My Profile");
+                fragment = new ProfileFragment();
+                break;
+            case R.id.nav_shopping:
+                setTitle("Shopping");
+                fragment = new ShoppingFragment();
+                break;
+            case R.id.nav_your_events:
+                setTitle("Your Events");
+                fragment = new YourEventsFragment();
+                break;
+            case R.id.nav_add_events:
+                setTitle("Add Event");
+                fragment = new AddEventsFragment();
+                break;
+            case R.id.nav_orders:
+                setTitle("Your Orders");
+                fragment = new OrdersFragment();
+                break;
+            case R.id.nav_friends:
+                setTitle("Friends");
+                fragment = new FriendsFragment();
+                break;
+            case R.id.nav_about_us:
+                setTitle("About Marvel Basket");
+                fragment = new AboutUsFragment();
+                break;
+        }
+
+
+        if (fragment != null){
+            Log.e(TAG, "onNavigationItemSelected: "+fragment );
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.home,fragment);
+            fragmentTransaction.commit();
+        }
+
+        drawer.closeDrawer(GravityCompat.START);
+
+        return true;
     }
 }
