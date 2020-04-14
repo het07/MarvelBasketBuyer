@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.ContentResolver;
 import android.content.ContentUris;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,30 +14,26 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -55,9 +50,6 @@ import apch.marvelbasket.ui.orders.OrdersFragment;
 import apch.marvelbasket.ui.profile.ProfileFragment;
 import apch.marvelbasket.ui.shopping.ShoppingFragment;
 import apch.marvelbasket.ui.user.HomeFragment;
-
-import static android.app.PendingIntent.getActivity;
-
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "HomeActivity";
@@ -83,19 +75,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
-       /* mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_user_home, R.id.nav_profile,R.id.nav_your_events, R.id.nav_add_events,R.id.nav_friends,R.id.nav_about_us,R.id.nav_shopping,R.id.nav_orders)
-                .setDrawerLayout(drawer)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);*/
-
         setTitle("Dashboard");
         navigationView.setCheckedItem(R.id.nav_user_home);
+
+
         Fragment fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.home,fragment);
+        fragmentTransaction.replace(R.id.frame,fragment);
         fragmentTransaction.commit();
 
         //====================Alarm service==========================
@@ -256,7 +242,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             Log.e(TAG, "onNavigationItemSelected: "+fragment );
 
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.home,fragment);
+            fragmentTransaction.replace(R.id.frame,fragment);
             fragmentTransaction.commit();
         }
 

@@ -8,17 +8,33 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.gson.internal.$Gson$Preconditions;
 
 import java.util.List;
 
+import apch.marvelbasket.FriendsEventsFragment;
 import apch.marvelbasket.R;
+import apch.marvelbasket.ui.friends.FriendsFragment;
 
 public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendViewHolder> {
     private List<FriendItems> friendList;
     private Context context;
 
+    private OnItemClickListener myListener;
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        myListener = listener;
+    }
 
     public FriendAdapter(List<FriendItems> friendList) {
         this.friendList = friendList;
@@ -28,10 +44,10 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
     @Override
     public FriendViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        context=parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         v = inflater.inflate(R.layout.friend_item, parent, false);
-        return new FriendViewHolder(v);
+        return new FriendViewHolder(v,myListener);
     }
 
 
@@ -40,7 +56,6 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         FriendItems currentItem = friendList.get(position);
         holder.textView1.setText(currentItem.getmText1());
         holder.textView2.setText("" + currentItem.getNum());
-
 
         int left = dpToPx(6);
         int top = dpToPx(3);
@@ -75,7 +90,12 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                AppCompatActivity activity= (AppCompatActivity) view.getContext();
+                Fragment fragment = new FriendsEventsFragment();
+                FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.frame,fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
 
@@ -91,16 +111,27 @@ public class FriendAdapter extends RecyclerView.Adapter<FriendAdapter.FriendView
         return friendList.size();
     }
 
-    public static class FriendViewHolder extends RecyclerView.ViewHolder {
+    public static class FriendViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener {
         TextView textView1;
         TextView textView2;
         CardView cardView;
 
-        public FriendViewHolder(@NonNull View itemView) {
+        public FriendViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             textView1 = itemView.findViewById(R.id.textView1_friends);
             textView2 = itemView.findViewById(R.id.textView2_friends);
             cardView = itemView.findViewById(R.id.cardview_friends);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            AppCompatActivity activity= (AppCompatActivity) view.getContext();
+            Fragment fragment = new FriendsEventsFragment();
+            FragmentTransaction fragmentTransaction = activity.getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame,fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
     }
 }

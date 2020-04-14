@@ -1,9 +1,11 @@
 package apch.marvelbasket.ui.friends;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -60,5 +62,11 @@ public class FriendsFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.setAdapter(adapter);
 
+        adapter.setOnItemClickListener(new FriendAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Log.e("FriendsFragment", "onItemClick: friends clicked "+friendsList.get(position).getClass());
+            }
+        });
     }
 }
